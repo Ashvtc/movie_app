@@ -2,15 +2,43 @@
 
 A new Flutter project.
 
-## Getting Started
+## Organización del proyecto
 
-This project is a starting point for a Flutter application.
+### Config
+  #### Routes
+  Rutas de navegación entre las pantallas
+  #### Theme
+  Configuración de los temas que se usa en el proyecto: color del fondo y los diferentes estilos de texto utilizados
 
-A few resources to get you started if this is your first Flutter project:
+### Domain
+  #### Models
+  Entidades del proyecto con sus repositorios respectivos
+  #### UseCases
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Infrastructure
+  #### DrivenAdapter
+  #### Helpers
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Presentation
+  #### Model View
+  #### Pages
+  Diferentes vistas/pantallas del proyecto, con sus widgets respectivos si son necesarios
+  #### Shared Widgets
+  Widgets que tienen en común todas o varias de las vistas
+
+### Shared
+
+## Librerías y códigos externos usados
+
+- [Google Fonts](https://pub.dev/packages/google_fonts)
+- [dio](https://pub.dev/packages/dio)
+- [http](https://pub.dev/packages/http)
+
+
+- [alert](https://pub.dev/packages/awesome_snackbar_content)
+
+## Iconos externos usados
+
+-[Drawer]("https://www.flaticon.es/iconos-gratis/ui" title="ui iconos", Ui iconos creados por Ilham Fitrotul Hayat - Flaticon)
+-[Close]("https://www.flaticon.es/iconos-gratis/cerca" title="cerca iconos", Cerca iconos creados por Ilham Fitrotul Hayat - Flaticon)
+-[Arrow]("https://www.flaticon.es/iconos-gratis/ui" title="ui iconos",Ui iconos creados por Ilham Fitrotul Hayat - Flaticon)
