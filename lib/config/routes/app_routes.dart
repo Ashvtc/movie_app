@@ -4,7 +4,7 @@ import 'package:movie_app/presentation/pages/home/home_screen.dart';
 import '../../presentation/pages/detail/detail_screen.dart';
 
 class AppRoutes {
-  static const initialRoute = 'detail';
+  static const initialRoute = 'home';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     'home': (BuildContext context) => const HomeScreen(),
