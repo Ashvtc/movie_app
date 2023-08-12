@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:ui';
 
 import 'package:movie_app/presentation/pages/detail/widgets/actors_widget.dart';
 
@@ -27,8 +26,8 @@ void infoMovieBox(BuildContext context, {required Text theTitle, required Text t
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0x00000000).withOpacity(0.20), //begin
-                    Color(0x00000000).withOpacity(0.70), //end
+                    const Color(0x00000000).withOpacity(0.20), //begin
+                    const Color(0x00000000).withOpacity(0.70), //end
                   ]
                 )
               ),
@@ -50,13 +49,13 @@ void infoMovieBox(BuildContext context, {required Text theTitle, required Text t
 
                   //ACTOR'S NAME
                   actorName: Text(
-                    "Título",
+                    "Actor's name",
                     style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleSmall),
                   ),
 
                   //ACTOR'S ROLE
                   actorRole: Text(
-                    "Rating                 ",
+                    "Actor's role",
                     style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.labelSmall),
                   ),
                 )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentation/pages/detail/widgets/appBarMenuDetail_widget.dart';
-import 'package:movie_app/presentation/pages/detail/widgets/infoBox.dart';
+import 'package:movie_app/presentation/pages/detail/widgets/infoBox_widget.dart';
 
 import '../../../config/theme/app_theme.dart';
 
