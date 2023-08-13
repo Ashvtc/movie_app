@@ -28,16 +28,13 @@ A new Flutter project.
 
 ### Shared
 
-## Librerías y códigos externos usados
+## Librerías externas usadas
 
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [dio](https://pub.dev/packages/dio)
 - [http](https://pub.dev/packages/http)
 
-
-- [alert](https://pub.dev/packages/awesome_snackbar_content)
-
-## Iconos externos usados
+## Imagenes externas usadas
 
 -[Drawer]("https://www.flaticon.es/iconos-gratis/ui" title="ui iconos", Ui iconos creados por Ilham Fitrotul Hayat - Flaticon)
 -[Close]("https://www.flaticon.es/iconos-gratis/cerca" title="cerca iconos", Cerca iconos creados por Ilham Fitrotul Hayat - Flaticon)

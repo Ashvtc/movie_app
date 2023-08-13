@@ -21,44 +21,40 @@ class _DetailScreenState extends State<DetailScreen> {
       appBar: appBarMenuDetail(context),
 
       //BODY CONTENT
-      body: Container(
-          width: double.infinity,
-          height: double.infinity,
+      body: GestureDetector(
+        onTap: (){
+          infoMovieBox(
+            context,
+
+            //MOVIE TITLE
+            theTitle: Text(
+              "Título",
+              style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineLarge),
+            ),
+
+            //MOVIE RATING
+            theRating: Text(
+              "Rating                 ",
+              style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineMedium),
+            ),
+
+          );
+        },
 
           //MOVIE POSTER
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage('https://sm.ign.com/ign_es/screenshot/default/mahogany-payoff-poster-spain_ww6w.jpg'),
-              fit: BoxFit.cover,
-            )
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage('https://sm.ign.com/ign_es/screenshot/default/mahogany-payoff-poster-spain_ww6w.jpg'),
+                fit: BoxFit.cover,
+              )
+            ),
+            alignment: Alignment.center,
           ),
-          alignment: Alignment.center,
 
-          //MOVIE INFO
-          child: Expanded(
-            child: GestureDetector(
-              onTap: (){
-                infoMovieBox(
-                  context,
-
-                  //MOVIE TITLE
-                  theTitle: Text(
-                    "Título",
-                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineLarge),
-                  ),
-
-                  //MOVIE RATING
-                  theRating: Text(
-                    "Rating                 ",
-                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineMedium),
-                  ),
-
-                );
-              },
-            )
-
-          ),
-        ),
+      ),
     );
   }
 }
