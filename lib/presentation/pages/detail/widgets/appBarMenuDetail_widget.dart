@@ -5,8 +5,7 @@ AppBar appBarMenuDetail(BuildContext context) {
   return AppBar(
     leading: GestureDetector(
       onTap: () {
-        final route = MaterialPageRoute(builder: (context) => const HomeScreen());
-        Navigator.push(context, route);
+        Navigator.pop(context);
       },
       child: Image.asset("assets/cerrar.png",),
     ),
