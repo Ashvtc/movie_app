@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
 
               //MOVIE LIST
-              const Expanded(child: ActorMovieList()),
+              //const Expanded(child: ActorMovieList()),
             ],
           ),
         ),

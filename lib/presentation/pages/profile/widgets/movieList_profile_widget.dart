@@ -7,7 +7,10 @@ import '../../detail/detail_screen.dart';
 class ActorMovieList extends StatelessWidget {
   const ActorMovieList({
     super.key,
+    required this.snapshot,
   });
+
+  final AsyncSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +28,16 @@ class ActorMovieList extends StatelessWidget {
           crossAxisSpacing: 25,
           mainAxisSpacing: 25
         ),
-        itemCount: 10,
-        itemBuilder: (context, index){
+
+        itemCount: snapshot.data!.length,
+        itemBuilder: (context, index) {
 
           //MOVIES
           return GestureDetector(
 
             //NAVIGATOR
             onTap: (){
-              final route = MaterialPageRoute(builder: (context) => const DetailScreen());
+              final route = MaterialPageRoute(builder: (context) => DetailScreen(movie: snapshot.data[index]));
               Navigator.push(context, route);
             },
 

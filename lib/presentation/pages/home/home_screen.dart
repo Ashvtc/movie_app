@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/pages/home/widgets/appBarMenu_widget.dart';
 import 'package:movie_app/presentation/pages/home/widgets/movieList_widget.dart';
@@ -15,9 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<Movie>> popularMovies;
 
-  //static const imagePath = 'https://image.tmdb.org/t/p/w500';
+  late Future<List<Movie>> popularMovies;
 
   @override
   void initState(){
@@ -35,8 +37,31 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const SideBar(),
 
       //BODY CONTENT
-      body: const SafeArea(
-        child: HomeMovieList(),
+      body: SafeArea(
+        child: FutureBuilder(
+          future: popularMovies,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            }
+
+            //MOVIE LIST
+            else if (snapshot.hasData) {
+                return Expanded(child: HomeMovieList(snapshot: snapshot,));
+            }
+
+            //INDICATOR
+            else {
+              return Center(
+                child: Platform.isAndroid
+                  ? const CircularProgressIndicator()
+                  : const CupertinoActivityIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
