@@ -1,69 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import 'package:movie_app/presentation/pages/detail/widgets/actors_widget.dart';
+import '../../../../domain/models/cast/cast.dart';
 
-import '../../../../config/theme/app_theme.dart';
-
-@override
-void infoMovieBox(BuildContext context, {required Text theTitle, required Text theRating}) {
+void infoMovieBox(BuildContext context, {required Text theTitle, required Text theRating, required int movieId, required List<Cast> castList}) {
   showModalBottomSheet(
-    context:context,
+    context: context,
     barrierColor: Colors.transparent,
     backgroundColor: Colors.transparent,
     builder: (context) {
       return ClipRRect(
-      child: Container(
-        width: MediaQuery.of(context).size.width.round() * 1,
-        height: 278.0,
-        color: Colors.transparent,
-        child: Stack(
-          children: [
-
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    const Color(0x00000000).withOpacity(0.20), //begin
-                    const Color(0x00000000).withOpacity(0.70), //end
-                  ]
-                )
-              ),
-            ),
-
-            //MOVIE INFO
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget> [
-
-                //TITLE & RATING
-                ListTile(
-                  title: theTitle,
-                  subtitle: theRating,
+        child: Container(
+          width: MediaQuery.of(context).size.width.round() * 1,
+          height: 278.0,
+          color: Colors.transparent,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      const Color(0x00000000).withOpacity(0.20),
+                      const Color(0x00000000).withOpacity(0.70),
+                    ],
+                  ),
                 ),
+              ),
 
-                //ACTORS
-                MovieActors(
+              // MOVIE INFO
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
 
-                  //ACTOR'S NAME
-                  actorName: Text(
-                    "Actor's name",
-                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleSmall),
+                  // TITLE & RATING
+                  ListTile(
+                    title: theTitle,
+                    subtitle: theRating,
                   ),
 
-                  //ACTOR'S ROLE
-                  actorRole: Text(
-                    "Actor's role",
-                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.labelSmall),
-                  ),
-                )
-              ],
-            )
-
-          ],
+                  // CAST
+                  MovieActors(movieInfo: movieId)
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  });}
+      );
+    },
+  );
+}

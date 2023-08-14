@@ -4,56 +4,86 @@ import 'package:movie_app/presentation/pages/detail/widgets/appBarMenuDetail_wid
 import 'package:movie_app/presentation/pages/detail/widgets/infoBox_widget.dart';
 
 import '../../../config/theme/app_theme.dart';
+import '../../../domain/models/cast/cast.dart';
+import '../../../domain/models/movie/movie.dart';
+import '../../../infrastructure/driven_adapter/movie_api/movie_api.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({super.key});
+
+  final Movie movie;
+
+  const DetailScreen({
+    super.key,
+    required this.movie,
+  });
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  List<Cast> castList = [];
+  late Movie movie;
+  static const imagePath = 'https://image.tmdb.org/t/p/original';
+
+  @override
+  void initState() {
+    super.initState();
+    movie = widget.movie;
+    int movieId = movie.id;
+    MovieApi movieApi = MovieApi();
+    movieApi.getMovieCast(movieId).then((value) {
+      setState(() {
+        castList = value;
+      });
+    }).catchError((error) {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    String rating = (movie.voteAverage * 10).toString();
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: appBarMenuDetail(context),
-
-      //BODY CONTENT
-      body: GestureDetector(
-        onTap: (){
-          infoMovieBox(
-            context,
-
-            //MOVIE TITLE
-            theTitle: Text(
-              "Título",
-              style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineLarge),
-            ),
-
-            //MOVIE RATING
-            theRating: Text(
-              "Rating                 ",
-              style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineMedium),
-            ),
-
-          );
-        },
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
 
           //MOVIE POSTER
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage('https://sm.ign.com/ign_es/screenshot/default/mahogany-payoff-poster-spain_ww6w.jpg'),
-                fit: BoxFit.cover,
-              )
+          Positioned.fill(
+            child: Image.network(
+              "$imagePath${movie.posterPath}",
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.fill,
             ),
-            alignment: Alignment.center,
           ),
 
+          //MOVIE INFO
+          SafeArea(
+            child: GestureDetector(
+              onTap: () {
+                infoMovieBox(
+                  context,
+                  //MOVIE TITLE
+                  theTitle: Text(
+                    movie.title,
+                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineLarge),
+                  ),
+
+                  //MOVIE RATING
+                  theRating: Text(
+                    "$rating% User Score",
+                    style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.headlineMedium),
+                  ),
+
+                  movieId: movie.id,
+                  castList: castList,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

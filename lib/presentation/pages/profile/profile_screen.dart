@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentation/pages/profile/widgets/appBarMenuProfile_widget.dart';
-import 'package:movie_app/presentation/pages/profile/widgets/movieList_profile_widget.dart';
 import 'package:movie_app/presentation/pages/profile/widgets/profile_widget.dart';
 
 import '../../../config/theme/app_theme.dart';
 import '../../shared_widgets/sideBarMenu_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, required int actorId});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
