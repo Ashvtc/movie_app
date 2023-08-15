@@ -30,7 +30,7 @@ class HomeMovieList extends StatelessWidget {
         itemCount: snapshot.data!.length,
         itemBuilder: (context, index) {
 
-          String rating = (snapshot.data![index].voteAverage * 10).toString();
+          String rating = (snapshot.data![index].voteAverage * 10).round().toString();
 
           return Padding(
             padding: const EdgeInsets.all(8.0),

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/presentation/pages/detail/widgets/appBarMenuDetail_widget.dart';
@@ -42,7 +45,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String rating = (movie.voteAverage * 10).toString();
+    String rating = (movie.voteAverage * 10).round().toString();
 
     return Scaffold(
       appBar: appBarMenuDetail(context),
@@ -51,12 +54,27 @@ class _DetailScreenState extends State<DetailScreen> {
         children: [
 
           //MOVIE POSTER
-          Positioned.fill(
-            child: Image.network(
-              "$imagePath${movie.posterPath}",
-              filterQuality: FilterQuality.high,
-              fit: BoxFit.fill,
-            ),
+          Stack(
+            children: [
+              Positioned.fill(
+                child: Image.network(
+                  "$imagePath${movie.posterPath}",
+                  filterQuality: FilterQuality.high,
+                  fit: BoxFit.fill,
+                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return Center(
+                        child: Platform.isAndroid
+                          ? const CircularProgressIndicator()
+                          : const CupertinoActivityIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+            ],
           ),
 
           //MOVIE INFO

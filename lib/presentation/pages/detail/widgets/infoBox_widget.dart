@@ -11,7 +11,7 @@ void infoMovieBox(BuildContext context, {required Text theTitle, required Text t
       return ClipRRect(
         child: Container(
           width: MediaQuery.of(context).size.width.round() * 1,
-          height: 278.0,
+          height: 400.0,
           color: Colors.transparent,
           child: Stack(
             children: [
@@ -30,7 +30,7 @@ void infoMovieBox(BuildContext context, {required Text theTitle, required Text t
 
               // MOVIE INFO
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
 
                   // TITLE & RATING

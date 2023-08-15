@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ActorProfile extends StatelessWidget {
-  const ActorProfile({
-    super.key, required this.actorName, required this.descriptionActor}
+   ActorProfile({
+    super.key, required this.actorName, required this.descriptionActor, required this.photoActor}
   );
 
   final dynamic actorName;
   final dynamic descriptionActor;
+
+  String  photoActor;
 
 
   @override
@@ -16,28 +18,46 @@ class ActorProfile extends StatelessWidget {
       child: Row(
         children: [
 
-        //PROFILE PICTURE
-          CircleAvatar(
-            radius: 34,
-            child: ClipOval(
-              child: Image.network('https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg',
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
+          Expanded(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Row(
+                    children: [
+
+                      //PROFILE PHOTO
+                      CircleAvatar(
+                        radius: 34,
+                        child: ClipOval(
+                          child: Image.network(photoActor,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(width: 15),
+
+                      //NAME
+                      actorName
+                    ]
+                  )
+                ),
+
+                //DESCRIPTION
+                Row(
+                  children:[
+                    const SizedBox(width: 85),
+                    Expanded(child: descriptionActor),
+                  ]
+                ),
+              ]
             ),
           ),
-
-          //DESCRIPTION
-          Expanded(
-            child: ListTile(
-              title: actorName,
-              subtitle: descriptionActor,
-            ),
-          )
-
-        ],
-      ),
+        ]
+      )
     );
   }
 
