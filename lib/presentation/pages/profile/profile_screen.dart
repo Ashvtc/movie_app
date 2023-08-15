@@ -67,45 +67,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               }
 
-              //MOVIE LIST
               else if (snapshot.hasData) {
                 return Column(
                     children: [
 
-                        Expanded(
-                          child: SizedBox(
-                            child: SingleChildScrollView(
-                              child: ActorProfile(
+                      Expanded(
+                        child: SizedBox(
+                          child: SingleChildScrollView(
+                            child: ActorProfile(
 
-                                //ACTOR'S PHOTO
-                                photoActor: "https://image.tmdb.org/t/p/w200${cast.profilePath}",
+                              //ACTOR'S PHOTO
+                              photoActor: "https://image.tmdb.org/t/p/w200${cast.profilePath}",
 
-                                //ACTOR'S NAME
-                                actorName: Text(
-                                  person.name,
-                                  style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleMedium),
-                                ),
+                              //ACTOR'S NAME
+                              actorName: Text(
+                                person.name,
+                                style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleMedium),
+                              ),
 
-                                //ACTOR'S DESCRIPTION
-                                descriptionActor: Text(
-                                  person.biography,
-                                  style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.bodySmall),
-                                ),
+                              //ACTOR'S DESCRIPTION
+                              descriptionActor: Text(
+                                person.biography,
+                                style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.bodySmall),
                               ),
                             ),
                           ),
                         ),
+                      ),
 
-                        Align(
-                          alignment: Alignment.topLeft, // Ajusta la alineación del texto aquí
-                          child: Text(
-                            "Casted on",
-                            style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleLarge)
-                          )
-                        ),
+                      //CASTED ON
+                      Align(
+                        alignment: Alignment.topLeft, // Ajusta la alineación del texto aquí
+                        child: Text(
+                          "Casted on",
+                          style: GoogleFonts.baloo2(textStyle: AppTheme.lightTheme.textTheme.titleLarge)
+                        )
+                      ),
 
-                        //MOVIE LIST
-                        Expanded(child: ActorMovieList(snapshot: snapshot,)),
+                      //MOVIE LIST
+                      Expanded(child: ActorMovieList(snapshot: snapshot,)),
 
                     ],
                 );

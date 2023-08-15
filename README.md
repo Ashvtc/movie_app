@@ -1,6 +1,5 @@
 # movie_app
 
-A new Flutter project.
 
 ## Organización del proyecto
 
@@ -13,26 +12,24 @@ A new Flutter project.
 ### Domain
   #### Models
   Entidades del proyecto con sus repositorios respectivos
-  #### UseCases
 
 ### Infrastructure
   #### DrivenAdapter
-  #### Helpers
+  Conexión con la API
 
 ### Presentation
-  #### Model View
   #### Pages
   Diferentes vistas/pantallas del proyecto, con sus widgets respectivos si son necesarios
   #### Shared Widgets
   Widgets que tienen en común todas o varias de las vistas
 
-### Shared
 
 ## Librerías externas usadas
 
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [dio](https://pub.dev/packages/dio)
 - [http](https://pub.dev/packages/http)
+
 
 ## Imagenes externas usadas
 

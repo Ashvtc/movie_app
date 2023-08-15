@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -46,19 +49,36 @@ class HomeMovieList extends StatelessWidget {
                 child: Stack(
                   children: [
 
-                    //MOVIE POSTER
-                    Container(
+                  //MOVIE POSTER
+                  Container(
                     height: 300,
                     width: 155,
                     decoration: const BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
-                    child: Image.network(
-                        "$imagePath${snapshot.data![index].posterPath}",
-                        filterQuality: FilterQuality.high,
-                        fit: BoxFit.fill,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                        child: Image.network(
+                          "$imagePath${snapshot.data![index].posterPath}",
+                          filterQuality: FilterQuality.high,
+                          fit: BoxFit.fill,
+                          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return Center(
+                                child: Platform.isAndroid
+                                  ? const CircularProgressIndicator()
+                                  : const CupertinoActivityIndicator(),
+                              );
+                            }
+                          },
+                        ),
                       ),
+                    ],
+                  ),
                     ),
 
                     //MOVIE INFO
